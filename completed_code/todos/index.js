@@ -55,6 +55,7 @@ const menuTemplate = [
 ];
 
 if (process.platform === 'darwin') {
+  // add an extra object to the beginin of the menu template
   menuTemplate.unshift({});
 }
 
