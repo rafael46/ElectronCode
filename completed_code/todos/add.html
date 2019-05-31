@@ -1,5 +1,6 @@
 <head>
 </head>
+
 <body>
   <form>
     <div>
@@ -16,6 +17,7 @@
     document.querySelector('form').addEventListener('submit', (event) => {
       event.preventDefault();
 
+      debugger;
       const { value } = document.querySelector('input');
       ipcRenderer.send('todo:add', value);
     });

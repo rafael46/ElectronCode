@@ -1,8 +1,15 @@
 <head>
 </head>
+
 <body>
   <h1>My Todos</h1>
   <ul></ul>
+
+  <!-- <div>
+    <ul>
+      <li></li>
+    </ul>
+  </div> -->
 
   <script>
     const electron = require('electron');
@@ -11,6 +18,7 @@
 
     ipcRenderer.on('todo:add', (event, todo) => {
       const li = document.createElement('li');
+      //please review document.createTextNode()
       const text = document.createTextNode(todo);
 
       li.appendChild(text);

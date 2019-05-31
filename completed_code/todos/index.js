@@ -8,6 +8,7 @@ let addWindow;
 app.on('ready', () => {
   mainWindow = new BrowserWindow({});
   mainWindow.loadURL(`file://${__dirname}/main.html`);
+  //close all child windows
   mainWindow.on('closed', () => app.quit());
 
   const mainMenu = Menu.buildFromTemplate(menuTemplate);
@@ -21,6 +22,7 @@ function createAddWindow() {
     title: 'Add New Todo'
   });
   addWindow.loadURL(`file://${__dirname}/add.html`);
+  // GARBAGE COLLECTOR
   addWindow.on('closed', () => addWindow = null);
 }
 
@@ -67,10 +69,11 @@ if (process.env.NODE_ENV !== 'production') {
       {
         label: 'Toggle Developer Tools',
         accelerator: process.platform === 'darwin' ? 'Command+Alt+I' : 'Ctrl+Shift+I',
+        // focusedWindow is a reference to the selected window
         click(item, focusedWindow) {
           focusedWindow.toggleDevTools();
         }
-      }
+      },
     ]
   });
 }
